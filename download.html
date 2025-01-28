@@ -10,11 +10,11 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      justify-content: center; /* 水平置中 */
+      align-items: center; /* 垂直置中 */
       flex-direction: column;
       height: 100vh;
-      background-color: #f5f5f5;
+      background-color: #808080; /* 設置背景為灰色 */
       gap: 20px; /* 增加布局之間的間距 */
       padding-top: 20px;
     }
@@ -35,9 +35,9 @@
     }
 
     .left img {
-      width: 100%; /* 確保圖片填滿容器 */
-      max-width: 150px; /* 最大寬度150px */
-      height: auto;
+      width: 371px; /* 設定圖片寬度 */
+      height: 200px; /* 設定圖片高度 */
+      object-fit: cover; /* 讓圖片適應容器尺寸，並保持比例 */
     }
 
     .right {
@@ -73,10 +73,11 @@
       transition: border 0.3s ease; /* 滑鼠懸停時的邊框過渡效果 */
     }
 
-    /* 修改按鈕1為紅色 */
+    /* 修改按鈕1為紅色，並增長寬度 */
     .buttons button:nth-child(1) {
       background-color: red;
       color: white;
+      width: 150px; /* 增加紅色按鈕的寬度 */
     }
 
     /* 滑鼠懸停時顯示黑色邊框 */
