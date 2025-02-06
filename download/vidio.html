@@ -10,20 +10,22 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center; /* 水平置中 */
-      align-items: center; /* 垂直置中 */
       flex-direction: column;
-      height: 100vh;
-      background-color: #808080; /* 設置背景為灰色 */
-      gap: 20px; /* 增加布局之間的間距 */
+      align-items: center;
+      background-color: #808080;
       padding-top: 20px;
     }
 
     .container {
       display: flex;
+      flex-direction: row;
       border: 2px solid black;
-      width: 80%;
-      height: 200px;
+      width: 90%;
+      max-width: 800px;
+      height: auto;
+      overflow: hidden;
+      background: white;
+      margin-bottom: 20px;
     }
 
     .left {
@@ -35,25 +37,26 @@
     }
 
     .left img {
-      width: 371px; /* 設定圖片寬度 */
-      height: 200px; /* 設定圖片高度 */
-      object-fit: cover; /* 讓圖片適應容器尺寸，並保持比例 */
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
 
     .right {
-      flex: 3;
-      padding: 20px;
-      position: relative;
-      overflow: hidden; /* 防止標題過長影響布局 */
+      flex: 2;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .title {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: bold;
-      margin-bottom: 20px;
-      white-space: nowrap; /* 防止換行 */
+      margin-bottom: 10px;
+      white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis; /* 當文字過長時顯示省略號 */
+      text-overflow: ellipsis;
     }
 
     .buttons {
@@ -63,51 +66,57 @@
 
     .buttons button,
     .download {
-      width: 100px;  /* 設置為 100px */
-      height: 50px;  /* 設置為 50px */
+      width: 100px;
+      height: 40px;
       border: 2px solid black;
       background-color: white;
       cursor: pointer;
-      font-size: 16px; /* 增加字型大小，讓文字不會顯得太小 */
-      border-radius: 15px; /* 圓角效果 */
-      transition: border 0.3s ease; /* 滑鼠懸停時的邊框過渡效果 */
+      font-size: 14px;
+      border-radius: 10px;
+      transition: 0.3s;
     }
 
-    /* 修改按鈕1為紅色，並增長寬度 */
     .buttons button:nth-child(1) {
       background-color: red;
       color: white;
-      width: 150px; /* 增加紅色按鈕的寬度 */
     }
 
-    /* 滑鼠懸停時顯示黑色邊框 */
     .buttons button:hover,
     .download:hover {
       border-color: black;
+      background-color: lightgray;
     }
 
     .download {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
+      align-self: flex-end;
     }
 
-    /* 底部的版權與聯繫資訊 */
     .footer {
       text-align: center;
-      width: 100%;
+      width: 90%;
       font-size: 14px;
-      margin-top: 40px;
       color: white;
+      padding: 20px 0;
     }
 
     .footer a {
-      color: #00f; /* 設定電子郵件為藍色 */
+      color: #00f;
       text-decoration: none;
     }
 
     .footer a:hover {
       text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        width: 95%;
+      }
+
+      .left {
+        border-right: none;
+      }
     }
   </style>
 </head>
@@ -157,7 +166,6 @@
     </div>
   </div>
 
-  <!-- 底部文字 -->
   <div class="footer">
     轉載需標註youtube原影片連結與作者為:我是真瓜子，本人有權拒絕他人轉載，如有問題請透過電子郵件詢問: <a href="mailto:guazii1106@sargua.us.kg">guazii1106@sargua.us.kg</a> <br>
     ~其他影片還在準備中，敬請期待~
