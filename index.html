@@ -13,8 +13,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            justify-content: space-between;
+            height: 100vh;
             background-color: #808080;
             color: white;
             text-align: center;
@@ -31,55 +31,65 @@
             font-size: 14px;
             margin-bottom: 20px;
         }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            max-width: 600px;
+        .footer {
+            font-size: 12px;
+            margin-bottom: 10px;
         }
         .button-container {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
+            background-color: #87CEEB; /* 預設天空藍 */
+            color: black;
+            border: none;
             border-radius: 8px;
+            padding: 0;
+            width: 300pt;
+            height: 50pt;
             text-decoration: none;
             font-size: 18px;
-            margin: 5px;
+            margin: 10px 0;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            padding: 10px 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .button-container img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
+            transform: translateX(-100%); /* 初始位置在畫面左側 */
+            transition: transform 0.8s ease;
         }
         .button-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid black;
         }
-        .button1 { background-color: #e63946; } 
-        .button2 { background-color: #000000; color: white; } 
-        .button3 { background-color: #6a0dad; } 
-        .button4 { background-color: #c0c0c0; color: black; } 
-        .button5 { background-color: #ffffff; color: black; } 
-        .button6 { background-color: #6441A5; } 
-        .button7 { background-color: #87CEEB; } 
-        .button8 { background-color: #FFC0CB; color: white; }
-
-        .footer {
-            font-size: 12px;
-            margin-top: 20px;
+        .button-container img {
+            width: 50pt;
+            height: 50pt;
+            object-fit: cover;
+            border-radius: 8px 0 0 8px;
         }
-        
-        @media (max-width: 600px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
+        .button-container span {
+            flex: 1;
+            text-align: left;
+            padding: 0 15px;
+            font-size: 18px;
         }
+        .button-container::after {
+            content: "👉";
+            font-size: 20px;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .button-container:hover::after {
+            opacity: 1;
+        }
+        .button1 { background-color: #e63946; } /* YouTube 紅色 */
+        .button2 { background-color: #000000; color: white; } /* TikTok 黑色 */
+        .button3 { background-color: #6a0dad; } /* DC群組 紫色 */
+        .button4 { background-color: #c0c0c0; color: black; } /* ROBLOX 銀色 */
+        .button5 { background-color: #ffffff; color: black; } /* 推特(X) 白色 */
+        .button6 { background-color: #6441A5; } /* Twitch 深紫色 */
+        .button7 { background-color: #87CEEB; } /* 哔哩哔哩 天空藍 */
+        .button8 { background-color: #FFC0CB; color: white; } /* Odysee 粉紅色 */
     </style>
 </head>
 <body>
@@ -88,37 +98,56 @@
     <h1>我是真瓜子</h1>
     <p>👇👇👇記得要去我其他平台的帳號看看唷!👇👇👇</p>
 
-    <div class="container">
-        <a href="https://www.youtube.com/@guazii1106" target="_blank" class="button-container button1">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
-            <span>YouTube</span>
-        </a>
-        <a href="https://www.tiktok.com/@guazii_1106" target="_blank" class="button-container button2">
-            <img src="https://sf-static.tiktokcdn.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" alt="TikTok">
-            <span>TikTok</span>
-        </a>
-        <a href="https://discord.gg/p8mbW2kHcV" target="_blank" class="button-container button3">
-            <img src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ" alt="Discord">
-            <span>DC群組</span>
-        </a>
-        <a href="https://www.roblox.com/users/4302748359" target="_blank" class="button-container button4">
-            <img src="https://play-lh.googleusercontent.com/WNWZaxi9RdJKe2GQM3vqXIAkk69mnIl4Cc8EyZcir2SKlVOxeUv9tZGfNTmNaLC717Ht" alt="ROBLOX">
-            <span>ROBLOX</span>
-        </a>
-        <a href="https://x.com/sarguastudio" target="_blank" class="button-container button5">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/X_logo.jpg" alt="推特(X)">
-            <span>推特(X)</span>
-        </a>
-        <a href="https://www.twitch.tv/guazii1106" target="_blank" class="button-container button6">
-            <img src="https://cdn.m7g.twitch.tv/ba46b4e5e395b11efd34/assets/uploads/core-header.png" alt="Twitch">
-            <span>Twitch</span>
-        </a>
-        <a href="https://space.bilibili.com/3546687171725977" target="_blank" class="button-container button7">
-            <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxuuj.ku6DU7DpevDlTx30eYBYoykHnuSyxOLPZnd8MvbvPVcxhuukJJghre0Zqzkv8UAjDW.JqhlCd84mngtIbU-&format=source" alt="哔哩哔哩">
-            <span>哔哩哔哩</span>
-        </a>
+    <a href="https://www.youtube.com/@guazii1106" target="_blank" class="button-container button1">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube 平台圖示">
+        <span>YouTube</span>
+    </a>
+    <a href="https://www.tiktok.com/@guazii_1106" target="_blank" class="button-container button2">
+        <img src="https://sf-static.tiktokcdn.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" alt="TikTok 平台圖示">
+        <span>TikTok</span>
+    </a>
+    <a href="https://discord.gg/p8mbW2kHcV" target="_blank" class="button-container button3">
+        <img src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ" alt="Discord 平台圖示">
+        <span>DC群組</span>
+    </a>
+    <a href="https://www.roblox.com/users/4302748359" target="_blank" class="button-container button4">
+        <img src="https://play-lh.googleusercontent.com/WNWZaxi9RdJKe2GQM3vqXIAkk69mnIl4Cc8EyZcir2SKlVOxeUv9tZGfNTmNaLC717Ht" alt="ROBLOX 平台圖示">
+        <span>ROBLOX主帳號</span>
+    </a>
+    <a href="https://x.com/sarguastudio" target="_blank" class="button-container button5">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/X_logo.jpg" alt="推特(X) 平台圖示">
+        <span>推特(X)</span>
+    </a>
+    <a href="https://www.twitch.tv/guazii1106" target="_blank" class="button-container button6">
+        <img src="https://cdn.m7g.twitch.tv/ba46b4e5e395b11efd34/assets/uploads/core-header.png?w=1200&h=630&fm=jpg&auto=format" alt="Twitch 平台圖示">
+        <span>Twitch</span>
+    </a>
+    <a href="https://space.bilibili.com/3546687171725977" target="_blank" class="button-container button7">
+        <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxuuj.ku6DU7DpevDlTx30eYBYoykHnuSyxOLPZnd8MvbvPVcxhuukJJghre0Zqzkv8UAjDW.JqhlCd84mngtIbU-&format=source" alt="哔哩哔哩 平台圖示">
+        <span>哔哩哔哩</span>
+    </a>
+    <a href="https://odysee.com/@guazii1106:d" target="_blank" class="button-container button8">
+        <img src="https://play-lh.googleusercontent.com/yxkURXRkmx-UJiu4ivZNxniNLddNYcV7D1Rwakt2M0rite5-kPMPU0OtZtorsJGScic" alt="Odysee 平台圖示">
+        <span>Odysee</span>
+    </a>
+
+    <a href="https://guazii.sargua.us.kg/download" target="_blank" class="button-container button4">
+        <span>下載我的影片</span>
+    </a>
+
+    <div class="footer">
+        ~已經到底了唷~
     </div>
 
-    <div class="footer">~已經到底了唷~</div>
+    <script>
+        window.addEventListener('load', () => {
+            const buttons = document.querySelectorAll('.button-container');
+            buttons.forEach((button, index) => {
+                setTimeout(() => {
+                    button.style.transform = 'translateX(0)';
+                }, index * 1); 
+            });
+        });
+    </script>
 </body>
 </html>
