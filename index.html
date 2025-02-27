@@ -7,13 +7,27 @@
     <link rel="icon" type="image/x-icon" href="https://png.pngtree.com/png-vector/20220723/ourmid/pngtree-link-vector-icon-png-image_6033236.png">
     <style>
         :root {
-            --win11-blue: #0078d4; /* Windows 11 主題藍 */
-            --win11-gray: #f0f0f0; /* 淺灰色背景 */
-            --win11-dark-gray: #333; /* 深灰色文字 */
+            /* 預設的淺色模式顏色 */
+            --bg-color: #f0f0f0; /* 淺灰色背景 */
+            --text-color: #333; /* 深灰色文字 */
+            --button-bg: white; /* 白色按鈕背景 */
+            --button-hover-border: rgba(0, 0, 0, 0.3); /* 按鈕懸停邊框 */
+             --border-color: rgba(0, 0, 0, 0.1); /* 細邊框顏色 */
+        }
+
+        /* 深色模式顏色 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212; /* 深灰色背景 */
+                --text-color: #f0f0f0; /* 淺灰色文字 */
+                --button-bg: #333; /* 深灰色按鈕背景 */
+                --button-hover-border: rgba(255, 255, 255, 0.3); /* 按鈕懸停邊框 */
+                --border-color: rgba(255, 255, 255, 0.1); /* 淺色細邊框 */
+            }
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Windows 11 字體 */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -21,8 +35,8 @@
             align-items: center;
             justify-content: space-between;
             height: 100vh;
-            background-color: var(--win11-gray); /* 使用淺灰色背景 */
-            color: var(--win11-dark-gray); /* 使用深灰色文字 */
+            background-color: var(--bg-color); /* 使用變數 */
+            color: var(--text-color); /* 使用變數 */
             text-align: center;
         }
 
@@ -30,84 +44,90 @@
             max-width: 100%;
             height: auto;
             margin-top: 20px;
-            border-radius: 8px;  /* 稍微圓角的圖片 */
+            border-radius: 8px;
         }
 
         h1 {
             margin-top: 20px;
-            font-size: 2.5em; /* 加大標題字體 */
-            font-weight: 600; /* 稍微加粗 */
+            font-size: 2.5em;
+            font-weight: 600;
         }
 
         p {
-            font-size: 1.1em; /* 稍微加大內文字體 */
+            font-size: 1.1em;
             margin-bottom: 20px;
         }
 
         .footer {
-            font-size: 0.9em; /* 稍微縮小頁尾字體 */
+            font-size: 0.9em;
             margin-bottom: 10px;
-            color: var(--win11-dark-gray);
+            color: var(--text-color); /* 使用變數 */
         }
 
-        /* 按鈕容器的樣式 */
         .button-grid {
             display: flex;
-            flex-wrap: wrap; /* 允許換行 */
-            justify-content: center; /* 水平置中 */
-            gap: 10px; /* 按鈕間距 */
-            max-width: 80%; /* 最大寬度，避免過度拉伸 */
-            margin: 20px auto; /* 上下外距，並水平置中 */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 80%;
+            margin: 20px auto;
         }
 
         .button-container {
             display: flex;
-            flex-direction: column; /* 垂直排列 */
-            align-items: center; /* 水平置中 */
-            justify-content: center; /* 垂直置中 */
-            background-color: white; /* 白色背景 */
-            color: var(--win11-dark-gray);
-            border: 1px solid rgba(0, 0, 0, 0.1); /* 細邊框 */
-            border-radius: 8px; /* 圓角 */
-            width: 100pt; /* 初始寬度 */
-            height: 100pt; /* 與寬度相同，形成正方形 */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--button-bg); /* 使用變數 */
+            color: var(--text-color); /* 使用變數 */
+            border: 1px solid var(--border-color); /* 使用變數 */
+            border-radius: 8px;
+            width: 100pt;
+            height: 100pt;
             text-decoration: none;
             font-size: 18px;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 淡淡的陰影 */
-            transition: box-shadow 0.3s ease; /* 陰影過渡效果 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
         }
 
         .button-container:hover {
-            border-color: rgba(0, 0, 0, 0.3); /* 懸停時邊框稍微加深 */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸停時陰影加強 */
+            border-color: var(--button-hover-border); /* 使用變數 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .button-container img {
-            width: 40pt; /* 稍微縮小圖片 */
-            height: 40pt; /* 稍微縮小圖片 */
+            width: 40pt;
+            height: 40pt;
             object-fit: cover;
-            border-radius: 4px; /* 圖片也稍微圓角 */
-            margin-bottom: 5px; /* 圖片與文字的間距 */
+            border-radius: 4px;
+            margin-bottom: 5px;
         }
 
         .button-container span {
-            font-size: 14px; /* 縮小文字大小 */
+            font-size: 14px;
             text-align: center;
             word-break: break-word;
         }
-        /* 以下保留原本的按鈕顏色設定 */
-        .button1 { background-color: #e63946; } /* YouTube 紅色 */
-        .button2 { background-color: #000000; color: white; } /* TikTok 黑色 */
-        .button3 { background-color: #6a0dad; } /* DC群組 紫色 */
-        .button4 { background-color: #c0c0c0; color: black; } /* ROBLOX 銀色 */
-        .button5 { background-color: #ffffff; color: black; } /* 推特(X) 白色 */
-        .button6 { background-color: #6441A5; } /* Twitch 深紫色 */
-        .button7 { background-color: #87CEEB; } /* 哔哩哔哩 天空藍 */
-        .button8 { background-color: #FFC0CB; color: white; } /* Odysee 粉紅色 */
-        .button9 { background-color: #FF61EF; color: black; } /* 術力口自由視頻網絡 紫色 */
+
+        /* 按鈕顏色 */
+        .button1 { background-color: #e63946; }
+        .button2 { background-color: #000000; color: white; }
+        .button3 { background-color: #6a0dad; }
+        .button4 { background-color: #c0c0c0; color: black; }
+        .button5 { background-color: #ffffff; color: black; }
+        .button6 { background-color: #6441A5; }
+        .button7 { background-color: #87CEEB; }
+        .button8 { background-color: #FFC0CB; color: white; }
+        .button9 { background-color: #FF61EF; color: black; }
+
+         /* 深色模式下的按鈕顏色調整 */
+        @media (prefers-color-scheme: dark) {
+            .button2 { color: var(--text-color); } /* TikTok 按鈕文字顏色 */
+            .button4, .button5 { color: var(--text-color); } /* ROBLOX, 推特按鈕文字顏色 */
+        }
     </style>
 </head>
 <body>
