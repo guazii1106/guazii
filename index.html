@@ -6,8 +6,14 @@
     <title>我是真瓜子</title>
     <link rel="icon" type="image/x-icon" href="https://png.pngtree.com/png-vector/20220723/ourmid/pngtree-link-vector-icon-png-image_6033236.png">
     <style>
+        :root {
+            --win11-blue: #0078d4; /* Windows 11 主題藍 */
+            --win11-gray: #f0f0f0; /* 淺灰色背景 */
+            --win11-dark-gray: #333; /* 深灰色文字 */
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Windows 11 字體 */
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,73 +21,84 @@
             align-items: center;
             justify-content: space-between;
             height: 100vh;
-            background-color: #808080;
-            color: white;
+            background-color: var(--win11-gray); /* 使用淺灰色背景 */
+            color: var(--win11-dark-gray); /* 使用深灰色文字 */
             text-align: center;
         }
+
         img {
             max-width: 100%;
             height: auto;
             margin-top: 20px;
+            border-radius: 8px;  /* 稍微圓角的圖片 */
         }
+
         h1 {
             margin-top: 20px;
+            font-size: 2.5em; /* 加大標題字體 */
+            font-weight: 600; /* 稍微加粗 */
         }
+
         p {
-            font-size: 14px;
+            font-size: 1.1em; /* 稍微加大內文字體 */
             margin-bottom: 20px;
         }
+
         .footer {
-            font-size: 12px;
+            font-size: 0.9em; /* 稍微縮小頁尾字體 */
             margin-bottom: 10px;
+            color: var(--win11-dark-gray);
         }
+
+        /* 按鈕容器的樣式 */
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap; /* 允許換行 */
+            justify-content: center; /* 水平置中 */
+            gap: 10px; /* 按鈕間距 */
+            max-width: 80%; /* 最大寬度，避免過度拉伸 */
+            margin: 20px auto; /* 上下外距，並水平置中 */
+        }
+
         .button-container {
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: #87CEEB; /* 預設天空藍 */
-            color: black;
-            border: none;
-            border-radius: 8px;
-            padding: 0;
-            width: 300pt;
-            height: 50pt;
+            flex-direction: column; /* 垂直排列 */
+            align-items: center; /* 水平置中 */
+            justify-content: center; /* 垂直置中 */
+            background-color: white; /* 白色背景 */
+            color: var(--win11-dark-gray);
+            border: 1px solid rgba(0, 0, 0, 0.1); /* 細邊框 */
+            border-radius: 8px; /* 圓角 */
+            width: 100pt; /* 初始寬度 */
+            height: 100pt; /* 與寬度相同，形成正方形 */
             text-decoration: none;
             font-size: 18px;
-            margin: 10px 0;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            transform: translateX(-100%); /* 初始位置在畫面左側 */
-            transition: transform 0.8s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 淡淡的陰影 */
+            transition: box-shadow 0.3s ease; /* 陰影過渡效果 */
         }
+
         .button-container:hover {
-            border: 2px solid black;
+            border-color: rgba(0, 0, 0, 0.3); /* 懸停時邊框稍微加深 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸停時陰影加強 */
         }
+
         .button-container img {
-            width: 50pt;
-            height: 50pt;
+            width: 40pt; /* 稍微縮小圖片 */
+            height: 40pt; /* 稍微縮小圖片 */
             object-fit: cover;
-            border-radius: 8px 0 0 8px;
+            border-radius: 4px; /* 圖片也稍微圓角 */
+            margin-bottom: 5px; /* 圖片與文字的間距 */
         }
+
         .button-container span {
-            flex: 1;
-            text-align: left;
-            padding: 0 15px;
-            font-size: 18px;
+            font-size: 14px; /* 縮小文字大小 */
+            text-align: center;
+            word-break: break-word;
         }
-        .button-container::after {
-            content: "👉";
-            font-size: 20px;
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-        .button-container:hover::after {
-            opacity: 1;
-        }
+        /* 以下保留原本的按鈕顏色設定 */
         .button1 { background-color: #e63946; } /* YouTube 紅色 */
         .button2 { background-color: #000000; color: white; } /* TikTok 黑色 */
         .button3 { background-color: #6a0dad; } /* DC群組 紫色 */
@@ -97,56 +114,49 @@
     <h1>我是真瓜子</h1>
     <p>👇👇👇記得要去我其他平台的帳號看看唷!👇👇👇</p>
 
-    <a href="https://www.youtube.com/@guazii1106" target="_blank" class="button-container button1">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube 平台圖示">
-        <span>YouTube</span>
-    </a>
-    <a href="https://www.tiktok.com/@guazii_1106" target="_blank" class="button-container button2">
-        <img src="https://sf-static.tiktokcdn.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" alt="TikTok 平台圖示">
-        <span>TikTok</span>
-    </a>
-    <a href="https://discord.gg/p8mbW2kHcV" target="_blank" class="button-container button3">
-        <img src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ" alt="Discord 平台圖示">
-        <span>DC群組</span>
-    </a>
-    <a href="https://www.roblox.com/users/4302748359" target="_blank" class="button-container button4">
-        <img src="https://play-lh.googleusercontent.com/WNWZaxi9RdJKe2GQM3vqXIAkk69mnIl4Cc8EyZcir2SKlVOxeUv9tZGfNTmNaLC717Ht" alt="ROBLOX 平台圖示">
-        <span>ROBLOX主帳號</span>
-    </a>
-    <a href="https://x.com/sarguastudio" target="_blank" class="button-container button5">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/X_logo.jpg" alt="推特(X) 平台圖示">
-        <span>推特(X)</span>
-    </a>
-    <a href="https://www.twitch.tv/guazii1106" target="_blank" class="button-container button6">
-        <img src="https://cdn.m7g.twitch.tv/ba46b4e5e395b11efd34/assets/uploads/core-header.png?w=1200&h=630&fm=jpg&auto=format" alt="Twitch 平台圖示">
-        <span>Twitch</span>
-    </a>
-    <a href="https://space.bilibili.com/3546687171725977" target="_blank" class="button-container button7">
-        <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxuuj.ku6DU7DpevDlTx30eYBYoykHnuSyxOLPZnd8MvbvPVcxhuukJJghre0Zqzkv8UAjDW.JqhlCd84mngtIbU-&format=source" alt="Bilibili 平台圖示">
-        <span>哔哩哔哩</span>
-    </a>
-    <a href="https://odysee.com/@guazii1106:d" target="_blank" class="button-container button8">
-        <img src="https://play-lh.googleusercontent.com/yxkURXRkmx-UJiu4ivZNxniNLddNYcV7D1Rwakt2M0rite5-kPMPU0OtZtorsJGScic" alt="Odysee 平台圖示">
-        <span>Odysee</span>
-    </a>
-    <a href="http://www.shuliko.cn/user/687" target="_blank" class="button-container button9">
-        <span>術力口自由視頻網絡</span>
-    </a>
-    <a href="https://guazii.sargua.us.kg/download/video" target="_blank" class="button-container button4">
-        <span>下載我的影片</span>
-    </a>
+    <div class="button-grid">
+        <a href="https://www.youtube.com/@guazii1106" target="_blank" class="button-container button1">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube 平台圖示">
+            <span>YouTube</span>
+        </a>
+        <a href="https://www.tiktok.com/@guazii_1106" target="_blank" class="button-container button2">
+            <img src="https://sf-static.tiktokcdn.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" alt="TikTok 平台圖示">
+            <span>TikTok</span>
+        </a>
+        <a href="https://discord.gg/p8mbW2kHcV" target="_blank" class="button-container button3">
+            <img src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ" alt="Discord 平台圖示">
+            <span>DC群組</span>
+        </a>
+        <a href="https://www.roblox.com/users/4302748359" target="_blank" class="button-container button4">
+            <img src="https://play-lh.googleusercontent.com/WNWZaxi9RdJKe2GQM3vqXIAkk69mnIl4Cc8EyZcir2SKlVOxeUv9tZGfNTmNaLC717Ht" alt="ROBLOX 平台圖示">
+            <span>ROBLOX主帳號</span>
+        </a>
+        <a href="https://x.com/sarguastudio" target="_blank" class="button-container button5">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/X_logo.jpg" alt="推特(X) 平台圖示">
+            <span>推特(X)</span>
+        </a>
+        <a href="https://www.twitch.tv/guazii1106" target="_blank" class="button-container button6">
+            <img src="https://cdn.m7g.twitch.tv/ba46b4e5e395b11efd34/assets/uploads/core-header.png?w=1200&h=630&fm=jpg&auto=format" alt="Twitch 平台圖示">
+            <span>Twitch</span>
+        </a>
+        <a href="https://space.bilibili.com/3546687171725977" target="_blank" class="button-container button7">
+            <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxuuj.ku6DU7DpevDlTx30eYBYoykHnuSyxOLPZnd8MvbvPVcxhuukJJghre0Zqzkv8UAjDW.JqhlCd84mngtIbU-&format=source" alt="Bilibili 平台圖示">
+            <span>哔哩哔哩</span>
+        </a>
+        <a href="https://odysee.com/@guazii1106:d" target="_blank" class="button-container button8">
+            <img src="https://play-lh.googleusercontent.com/yxkURXRkmx-UJiu4ivZNxniNLddNYcV7D1Rwakt2M0rite5-kPMPU0OtZtorsJGScic" alt="Odysee 平台圖示">
+            <span>Odysee</span>
+        </a>
+        <a href="http://www.shuliko.cn/user/687" target="_blank" class="button-container button9">
+            <span>術力口自由視頻網絡</span>
+        </a>
+        <a href="https://guazii.sargua.us.kg/download/video" target="_blank" class="button-container button4">
+            <span>下載我的影片</span>
+        </a>
+    </div>
+
     <div class="footer">
         ~已經到底了唷~
     </div>
-    <script>
-        window.addEventListener('load', () => {
-            const buttons = document.querySelectorAll('.button-container');
-            buttons.forEach((button, index) => {
-                setTimeout(() => {
-                    button.style.transform = 'translateX(0)';
-                }, index * 1);
-            });
-        });
-    </script>
 </body>
 </html>
