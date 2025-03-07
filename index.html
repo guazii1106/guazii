@@ -113,11 +113,12 @@
         }
 
         .button-container img {
-            width: 40px; /* 使用 px */
-            height: 40px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 5px;
+            width: 48px;  /* 統一設定更大的尺寸 */
+            height: 48px;
+            object-fit: contain;  /* 改用 contain 以確保圖片不會被裁切 */
+            border-radius: 8px;   /* 稍微增加圓角 */
+            margin-bottom: 8px;   /* 調整間距 */
+            padding: 4px;         /* 添加內間距 */
         }
 
         .button-container span {
@@ -153,6 +154,35 @@
         .fade-in.show {
             opacity: 1;
         }
+
+        /* Loading 指示器樣式 */
+        .loading-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -162,59 +192,94 @@
 
         <div class="button-grid">
             <a href="https://www.youtube.com/@guazii1106" target="_blank" class="button-container button1 fade-in">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube 平台圖示">
+                <img src="img/youtube.svg" alt="YouTube 平台圖示">
                 <span>YouTube</span>
             </a>
             <a href="https://www.tiktok.com/@guazii_1106" target="_blank" class="button-container button2 fade-in">
-                <img src="https://sf-static.tiktokcdn.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" alt="TikTok 平台圖示">
+                <img src="img/tiktok.png" alt="TikTok 平台圖示">
                 <span>TikTok</span>
             </a>
             <a href="https://discord.gg/4buH2Pxc" target="_blank" class="button-container button3 fade-in">
-                <img src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ" alt="Discord 平台圖示">
+                <img src="img/discord.png" alt="Discord 平台圖示">
                 <span>discord群組</span>
             </a>
             <a href="https://www.roblox.com/users/4302748359" target="_blank" class="button-container button4 fade-in">
-                <img src="https://play-lh.googleusercontent.com/WNWZaxi9RdJKe2GQM3vqXIAkk69mnIl4Cc8EyZcir2SKlVOxeUv9tZGfNTmNaLC717Ht" alt="ROBLOX 平台圖示">
+                <img src="img/roblox.png" alt="ROBLOX 平台圖示">
                 <span>ROBLOX主帳號</span>
             </a>
             <a href="https://x.com/sarguastudio" target="_blank" class="button-container button5 fade-in">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/X_logo.jpg" alt="推特(X) 平台圖示">
+                <img src="img/x.png" alt="推特(X) 平台圖示">
                 <span>推特(X)</span>
             </a>
             <a href="https://www.twitch.tv/guazii1106" target="_blank" class="button-container button6 fade-in">
-                <img src="https://cdn.m7g.twitch.tv/ba46b4e5e395b11efd34/assets/uploads/core-header.png?w=1200&h=630&fm=jpg&auto=format" alt="Twitch 平台圖示">
+                <img src="img/twitch.png" alt="Twitch 平台圖示">
                 <span>Twitch</span>
             </a>
             <a href="https://space.bilibili.com/3546687171725977" target="_blank" class="button-container button7 fade-in">
-                <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxuuj.ku6DU7DpevDlTx30eYBYoykHnuSyxOLPZnd8MvbvPVcxhuukJJghre0Zqzkv8UAjDW.JqhlCd84mngtIbU-&format=source" alt="Bilibili 平台圖示">
+                <img src="img/bilibili.png" alt="Bilibili 平台圖示">
                 <span>哔哩哔哩</span>
             </a>
             <a href="https://odysee.com/@guazii1106:d" target="_blank" class="button-container button8 fade-in">
-                <img src="https://play-lh.googleusercontent.com/yxkURXRkmx-UJiu4ivZNxniNLddNYcV7D1Rwakt2M0rite5-kPMPU0OtZtorsJGScic" alt="Odysee 平台圖示">
+                <img src="img/odysee.png" alt="Odysee 平台圖示">
                 <span>Odysee</span>
             </a>
             <a href="http://www.shuliko.cn/user/687" target="_blank" class="button-container button9 fade-in">
-                <img src="https://github.com/guazii1106/guazii/blob/main/p2.png?raw=true" alt="術力口自由視頻網絡 平台圖示">
+                <img src="img/p2.png" alt="術力口自由視頻網絡 平台圖示">
                 <span>術力口自由視頻網絡</span>
             </a>
             <a href="https://guazii.sargua.us.kg/download/video" target="_blank" class="button-container button4 fade-in">
-                <img src="https://raw.githubusercontent.com/guazii1106/guazii/refs/heads/main/p1.png" alt="下載影片 圖示">
+                <img src="img/p1.png" alt="下載影片 圖示">
                 <span>下載我的影片</span>
             </a>
         </div>
     </main>
+    <div class="loading-container" id="loadingIndicator">
+        <div class="loading-spinner"></div>
+        <span>載入中...</span>
+    </div>
     <footer class="footer">
         &copy; sarguastudio
     </footer>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const buttons = document.querySelectorAll('.button-container.fade-in');
-        buttons.forEach((button, index) => {
-          setTimeout(() => {
-            button.classList.add('show');
-          }, index * 70); // 70ms
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const buttons = document.querySelectorAll('.button-container.fade-in');
+            let loadedImages = 0;
+            const totalImages = document.querySelectorAll('img').length;
+
+            // 顯示載入指示器
+            loadingIndicator.style.display = 'flex';
+
+            // 監聽所有圖片載入
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('load', () => {
+                    loadedImages++;
+                    if (loadedImages === totalImages) {
+                        // 所有圖片載入完成
+                        loadingIndicator.style.display = 'none';
+                        // 開始按鈕動畫
+                        buttons.forEach((button, index) => {
+                            setTimeout(() => {
+                                button.classList.add('show');
+                            }, index * 70);
+                        });
+                    }
+                });
+                
+                // 處理圖片載入錯誤
+                img.addEventListener('error', () => {
+                    loadedImages++;
+                    if (loadedImages === totalImages) {
+                        loadingIndicator.style.display = 'none';
+                        buttons.forEach((button, index) => {
+                            setTimeout(() => {
+                                button.classList.add('show');
+                            }, index * 70);
+                        });
+                    }
+                });
+            });
         });
-      });
     </script>
 </body>
 </html>
