@@ -46,12 +46,21 @@
 <body>
     <h1>404</h1>
     <p>這裡甚麼都沒有（*゜ー゜*）</p>
-    <p>2秒後回首頁</p>
+    <p><span id="countdown">5</span>秒後回首頁</p>
 
     <script>
-        setTimeout(function() {
-            window.location.href = "https://guazii.sargua.us.kg";
-        }, 2000); // 2000 毫秒 = 2秒
+        let timeLeft = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdown = setInterval(function() {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = "https://sargua.us.kg";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
