@@ -241,45 +241,48 @@
         &copy; sarguastudio
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingIndicator = document.getElementById('loadingIndicator');
-            const buttons = document.querySelectorAll('.button-container.fade-in');
-            let loadedImages = 0;
-            const totalImages = document.querySelectorAll('img').length;
+    document.addEventListener('DOMContentLoaded', function() {
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const buttons = document.querySelectorAll('.button-container.fade-in');
+        let loadedImages = 0;
+        const totalImages = document.querySelectorAll('img').length;
 
-            // 顯示載入指示器
-            loadingIndicator.style.display = 'flex';
+        // 顯示載入指示器
+        loadingIndicator.style.display = 'flex';
 
-            // 監聽所有圖片載入
-            document.querySelectorAll('img').forEach(img => {
-                img.addEventListener('load', () => {
-                    loadedImages++;
-                    if (loadedImages === totalImages) {
-                        // 所有圖片載入完成
-                        loadingIndicator.style.display = 'none';
-                        // 開始按鈕動畫
-                        buttons.forEach((button, index) => {
-                            setTimeout(() => {
-                                button.classList.add('show');
-                            }, index * 70);
-                        });
-                    }
-                });
-                
-                // 處理圖片載入錯誤
-                img.addEventListener('error', () => {
-                    loadedImages++;
-                    if (loadedImages === totalImages) {
-                        loadingIndicator.style.display = 'none';
-                        buttons.forEach((button, index) => {
-                            setTimeout(() => {
-                                button.classList.add('show');
-                            }, index * 70);
-                        });
-                    }
-                });
+        // 設定載入超時
+        const timeout = setTimeout(() => {
+            loadingIndicator.style.display = 'none';
+            showButtons();
+        }, 5000); // 5秒後強制顯示
+
+        function showButtons() {
+            buttons.forEach((button, index) => {
+                setTimeout(() => {
+                    button.classList.add('show');
+                }, index * 70);
             });
+        }
+
+        // 監聽所有圖片載入
+        document.querySelectorAll('img').forEach(img => {
+            if (img.complete) {
+                imageLoaded();
+            } else {
+                img.addEventListener('load', imageLoaded);
+                img.addEventListener('error', imageLoaded);
+            }
         });
-    </script>
+
+        function imageLoaded() {
+            loadedImages++;
+            if (loadedImages >= totalImages) {
+                clearTimeout(timeout);
+                loadingIndicator.style.display = 'none';
+                showButtons();
+            }
+        }
+    });
+</script>
 </body>
 </html>
