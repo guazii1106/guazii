@@ -183,6 +183,46 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* 按鈕載入動畫容器 */
+        .button-loading {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--button-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        /* 載入動畫圓圈 */
+        .button-spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--text-color);
+            animation: spin 1s linear infinite;
+            margin-bottom: 8px;
+        }
+
+        /* 載入文字 */
+        .button-loading span {
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        /* 初始隱藏按鈕 */
+        .button-container {
+            display: none;
+        }
+
+        /* 顯示已載入的按鈕 */
+        .button-container.loaded {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -191,42 +231,101 @@
         <p>記得要去我其他平台的帳號看看唷!</p>
 
         <div class="button-grid">
+            <!-- YouTube 按鈕 -->
+            <div class="button-loading fade-in" data-button="youtube">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://www.youtube.com/@guazii1106" target="_blank" class="button-container button1 fade-in">
                 <img src="img/youtube.svg" alt="YouTube 平台圖示">
                 <span>YouTube</span>
             </a>
+
+            <!-- TikTok 按鈕 -->
+            <div class="button-loading fade-in" data-button="tiktok">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://www.tiktok.com/@guazii_1106" target="_blank" class="button-container button2 fade-in">
                 <img src="img/tiktok.png" alt="TikTok 平台圖示">
                 <span>TikTok</span>
             </a>
+
+            <!-- Discord 按鈕 -->
+            <div class="button-loading fade-in" data-button="discord">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://discord.gg/4buH2Pxc" target="_blank" class="button-container button3 fade-in">
                 <img src="img/discord.png" alt="Discord 平台圖示">
                 <span>discord群組</span>
             </a>
+
+            <!-- ROBLOX 按鈕 -->
+            <div class="button-loading fade-in" data-button="roblox">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://www.roblox.com/users/4302748359" target="_blank" class="button-container button4 fade-in">
                 <img src="img/roblox.png" alt="ROBLOX 平台圖示">
                 <span>ROBLOX主帳號</span>
             </a>
+
+            <!-- 推特(X) 按鈕 -->
+            <div class="button-loading fade-in" data-button="x">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://x.com/sarguastudio" target="_blank" class="button-container button5 fade-in">
                 <img src="img/x.png" alt="推特(X) 平台圖示">
                 <span>推特(X)</span>
             </a>
+
+            <!-- Twitch 按鈕 -->
+            <div class="button-loading fade-in" data-button="twitch">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://www.twitch.tv/guazii1106" target="_blank" class="button-container button6 fade-in">
                 <img src="img/twitch.png" alt="Twitch 平台圖示">
                 <span>Twitch</span>
             </a>
+
+            <!-- Bilibili 按鈕 -->
+            <div class="button-loading fade-in" data-button="bilibili">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://space.bilibili.com/3546687171725977" target="_blank" class="button-container button7 fade-in">
                 <img src="img/bilibili.png" alt="Bilibili 平台圖示">
                 <span>哔哩哔哩</span>
             </a>
+
+            <!-- Odysee 按鈕 -->
+            <div class="button-loading fade-in" data-button="odysee">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://odysee.com/@guazii1106:d" target="_blank" class="button-container button8 fade-in">
                 <img src="img/odysee.png" alt="Odysee 平台圖示">
                 <span>Odysee</span>
             </a>
+
+            <!-- 術力口自由視頻網絡 按鈕 -->
+            <div class="button-loading fade-in" data-button="shuliko">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="http://www.shuliko.cn/user/687" target="_blank" class="button-container button9 fade-in">
                 <img src="img/p2.png" alt="術力口自由視頻網絡 平台圖示">
                 <span>術力口自由視頻網絡</span>
             </a>
+
+            <!-- 下載影片 按鈕 -->
+            <div class="button-loading fade-in" data-button="download">
+                <div class="button-spinner"></div>
+                <span>載入中...</span>
+            </div>
             <a href="https://guazii.sargua.us.kg/download/video" target="_blank" class="button-container button4 fade-in">
                 <img src="img/p1.png" alt="下載影片 圖示">
                 <span>下載我的影片</span>
@@ -243,22 +342,20 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const loadingIndicator = document.getElementById('loadingIndicator');
-        const buttons = document.querySelectorAll('.button-container.fade-in');
+        const buttons = document.querySelectorAll('.button-container');
+        const loadingElements = document.querySelectorAll('.button-loading');
         let loadedImages = 0;
         const totalImages = document.querySelectorAll('img').length;
 
-        // 顯示載入指示器
-        loadingIndicator.style.display = 'flex';
-
-        // 設定載入超時
-        const timeout = setTimeout(() => {
-            loadingIndicator.style.display = 'none';
-            showButtons();
-        }, 5000); // 5秒後強制顯示
+        // 初始隱藏按鈕，顯示載入動畫
+        buttons.forEach(button => button.style.display = 'none');
+        loadingElements.forEach(loading => loading.style.display = 'flex');
 
         function showButtons() {
+            loadingElements.forEach(loading => loading.style.display = 'none');
             buttons.forEach((button, index) => {
                 setTimeout(() => {
+                    button.style.display = 'flex';
                     button.classList.add('show');
                 }, index * 70);
             });
@@ -277,7 +374,6 @@
         function imageLoaded() {
             loadedImages++;
             if (loadedImages >= totalImages) {
-                clearTimeout(timeout);
                 loadingIndicator.style.display = 'none';
                 showButtons();
             }
